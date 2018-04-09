@@ -1,33 +1,27 @@
 package com.dang.ctci.arr;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CheckPermutation {
+  
+  List<String> permutationStrings = new ArrayList<String>();
 
   private boolean isPermuation(String str1, String str2) {
-    return false;
+    permute(str1, 0, str1.length() - 1);
+    return permutationStrings.contains(str2);
   }
 
   private void permute(String str, int left, int right) {
     if (left == right) {
-      System.out.println(str);
+     permutationStrings.add(str);
     } else {
       for(int i = left; i <= right; i++) {
         str = swap(str, left, i);
         permute(str, left + 1, right);
-//        str = swap(str, left, i);
       }
     }
   }
-  
-
-  
-//  private String swap(String str, int i, int j) {
-//    char temp;
-//    char[] chars = str.toCharArray();
-//    temp = chars[i];
-//    chars[i] = chars[j];
-//    chars[j] = temp;
-//    return String.valueOf(chars);
-//  }
   
   public String swap(String a, int i, int j)
   {
@@ -40,10 +34,10 @@ public class CheckPermutation {
   }
   
   public static void main(String[] args) {
-    String str = "ABC";
-    int n = str.length();
+    String str1 = "ABC";
+    String str2 = "DAC";
     CheckPermutation app = new CheckPermutation();
-    app.permute(str, 0, n -1 );
+    System.out.println(app.isPermuation(str1, str2));
   }
 
 }
