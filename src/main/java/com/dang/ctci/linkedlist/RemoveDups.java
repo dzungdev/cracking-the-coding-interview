@@ -10,16 +10,16 @@ public class RemoveDups {
   public void deleteDups(Node head) {
     Node i = head;
     while (i != null) {
-      Node j = i.getNext();
+      Node j = i.next;
       Node prev = i;
       while (j != null) {
-        if (j.getVal() == i.getVal()) {
-          prev.setNext(j.getNext());
+        if (j.val == i.val) {
+          prev.next = j.next;
         }
         prev = j;
-        j = j.getNext();
+        j = j.next;
       }
-      i = i.getNext();
+      i = i.next;
     }
   }
   
@@ -28,8 +28,8 @@ public class RemoveDups {
       RemoveDups app = new RemoveDups();
       app.deleteDups(head);
       while (head != null) {
-        System.out.print(head.getVal());
-        head = head.getNext();
+        System.out.print(head.val);
+        head = head.next;
       }
   }
   
