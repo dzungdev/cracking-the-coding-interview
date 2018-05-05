@@ -14,7 +14,7 @@ public class InputClazz {
     }
     return head;
   }
-  
+
   public static <T> Node<T> createCycleLinkedList(T[] arr) {
     Node<T> head = new Node<T>(arr[0]);
     Node<T> temp = head;
@@ -23,14 +23,30 @@ public class InputClazz {
         Node<T> newNode = new Node<T>(arr[i]);
         temp.next = newNode;
         temp = newNode;
-        if (i == arr.length - 1) temp.next = head;
+        if (i == arr.length - 1)
+          temp.next = head;
       }
     }
     return head;
   }
 
   public static <T> TreeNode<T> createBinaryTree(T[] arr) {
-    return createBinaryTree(arr, 0, arr.length - 1);
+    return createBinaryTree(arr, null, 0);
+  }
+
+  public static <T> TreeNode<T> createBinaryTree(T[] arr, TreeNode<T> root, int i) {
+    // Base case for recursion
+    if (i < arr.length) {
+      TreeNode<T> temp = new TreeNode<T>(arr[i]);
+      root = temp;
+
+      // insert left child
+      root.left = createBinaryTree(arr, root.left, 2 * i + 1);
+
+      // insert right child
+      root.right = createBinaryTree(arr, root.right, 2 * i + 2);
+    }
+    return root;
   }
 
   private static <T> TreeNode<T> createBinaryTree(T[] arr, int start, int end) {
