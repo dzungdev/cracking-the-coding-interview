@@ -58,5 +58,9 @@ public class InputClazz {
     node.right = createBinaryTree(arr, mid + 1, end);
     return node;
   }
+  
+  private static  TreeNode<Integer> insertBinaryTree(TreeNode<Integer> root, int data) {
+    
+  }
 
 }
