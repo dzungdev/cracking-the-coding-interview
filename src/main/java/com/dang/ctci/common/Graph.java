@@ -12,6 +12,14 @@ public class Graph<T> {
     this.numberOfVertice = numberOfVertice;
     nodes = new ArrayList<GNode<T>>();
   }
+  
+  public Graph(T[] vertices) {
+    this.numberOfVertice = vertices.length;
+    nodes = new ArrayList<GNode<T>>();
+    for (T v: vertices) {
+      nodes.add(new GNode<>(v));
+    }
+  }
 
   public void addEdge(T v, T w) {
     GNode<T> vNode = new GNode<T>(v);

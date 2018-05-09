@@ -60,7 +60,16 @@ public class InputClazz {
   }
   
   private static  TreeNode<Integer> insertBinaryTree(TreeNode<Integer> root, int data) {
-    
+    if (root == null) {
+      root = new TreeNode<Integer>(data);
+      return root;
+    }
+    if (data < root.data) {
+      root.left = insertBinaryTree(root.left, data);
+    } else if (data > root.data) {
+      root.right = insertBinaryTree(root.right, data);
+    }
+    return root;
   }
 
 }

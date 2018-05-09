@@ -10,9 +10,13 @@ import java.util.List;
  */
 public class GNode<T> {
   
+  public enum State {COMPLETE, PARTIAL, BLANK}
+  
   public T data;
   public boolean isVisited;
   public List<GNode<T>> children = new ArrayList<GNode<T>>();
+  private State state = State.BLANK;
+  
   
   public GNode(T data) {
     this.data = data;
@@ -42,7 +46,13 @@ public class GNode<T> {
       return false;
     return true;
   }
-  
-  
+
+  public State getState() {
+    return state;
+  }
+
+  public void setState(State state) {
+    this.state = state;
+  }
   
 }
