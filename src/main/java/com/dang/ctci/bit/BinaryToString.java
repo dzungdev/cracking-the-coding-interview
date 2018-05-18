@@ -8,7 +8,7 @@ public class BinaryToString {
     StringBuilder binary = new StringBuilder();
     binary.append(".");
     while ( num > 0) {
-      //if (binary.length() > 32) return "ERROR";
+      if (binary.length() > 32) return "ERROR";
       
       double r = num * 2;
       System.out.println("r is: " + r);
