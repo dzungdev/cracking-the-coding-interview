@@ -9,6 +9,7 @@ public class Call {
   
   public Call(Caller caller) {
     this.caller = caller;
+    this.rank = Rank.RESPONDENT;
   }
   
   public void setRank(Rank rank) {
@@ -17,6 +18,10 @@ public class Call {
   
   public Rank getRank() {
     return rank;
+  }
+  
+  public void setHandler(Employee handler) {
+    this.handler = handler;
   }
   
 }

@@ -18,6 +18,6 @@ public enum Rank {
   private Rank(int value) {this.value = value;}
   
   public int getValue() {return value;}
-  public Rank getRankByValue(int value) { return rankMap.get(value);}
+  public static Rank getRankByValue(int value) { return rankMap.get(value);}
   
 }
