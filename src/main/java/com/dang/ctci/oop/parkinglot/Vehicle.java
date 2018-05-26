@@ -14,14 +14,15 @@ public abstract class Vehicle {
   public int getSpotsNeeded() {return spotsNeeded;}
   
   public void park(ParkingSpot s) {
+    s.park(this);
     parkingSpots.add(s);
-    //TODO:need to add the vehicle to spot to
-    //reduce the available spot number in Level
   }
   
   public void leave() {
+    for (ParkingSpot spot: parkingSpots) {
+      spot.freeSpot();
+    }
     parkingSpots.clear();
-    //TODO: increment spot size in Level
   }
   
   public abstract boolean isFittedInSport(ParkingSpot spot);

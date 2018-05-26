@@ -18,6 +18,16 @@ public class ParkingSpot {
   public boolean isAvailable() { return vehicle == null; }
   
   public boolean isFitVehicle(Vehicle vehicle) {return vehicle.size == spotSize;}
+  
+  public void park(Vehicle vehicle) {
+    this.vehicle = vehicle;
+    this.level.reduceAvailableSpots();
+  }
+  
+  public void freeSpot() {
+    this.vehicle = null;
+    this.level.incrementAvailableSpots();
+  }
 
   public int getRow() {
     return row;
@@ -41,6 +51,14 @@ public class ParkingSpot {
 
   public void setLevel(Level level) {
     this.level = level;
+  }
+
+  public Vehicle getVehicle() {
+    return vehicle;
+  }
+
+  public void setVehicle(Vehicle vehicle) {
+    this.vehicle = vehicle;
   }
   
 }

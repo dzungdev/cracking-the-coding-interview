@@ -20,13 +20,18 @@ public class Level {
   
   //TODO: need to do the logic here
   public boolean parkVehicle(Vehicle vehicle) {
+    int spotStartIndex = findAvailableSpots(vehicle);
+    if (spotStartIndex != -1) {
+      parkStartingAtSpot(spotStartIndex, vehicle);
+      return true;
+    }
     return false;
   }
   
   private boolean parkStartingAtSpot(int num, Vehicle v) {
     int endSpot = num + v.getSpotsNeeded();
-    while (num < endSpot) {
-      
+    for (int i = num; i < endSpot;i++) {
+      spots[i].park(v);
     }
     return true;
   }
@@ -34,14 +39,17 @@ public class Level {
   private int findAvailableSpots(Vehicle vehicle) {
     if (vehicle.getSpotsNeeded() == 5) {
       for (int i = 0; i <= spots.length - 5; i++) {
-        if (spots[i].isAvailable() && spots[i+1].isAvailable() && spots[i+2].isAvailable()
-              && spots[i+3].isAvailable() && spots[i+4].isAvailable()) {
+        if (spots[i].isAvailable() && spots[i].isFitVehicle(vehicle) && 
+            spots[i+1].isAvailable() && spots[i+1].isFitVehicle(vehicle) &&  
+            spots[i+2].isAvailable() && spots[i+2].isFitVehicle(vehicle) &&
+            spots[i+3].isAvailable() && spots[i+3].isFitVehicle(vehicle) &&
+            spots[i+4].isAvailable() &&  spots[i+4].isFitVehicle(vehicle)) {
           return i;
         }
       }
     } else {
       for (int i = 0; i < spots.length; i++) {
-        if (spots[i].isAvailable()) {
+        if (spots[i].isAvailable() && spots[i].isFitVehicle(vehicle)) {
           return i;
         }
       }
