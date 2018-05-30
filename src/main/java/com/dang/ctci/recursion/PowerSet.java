@@ -6,7 +6,7 @@ import java.util.List;
 public class PowerSet {
   
   List<List<Integer>> getSubSets(List<Integer> set) {
-    return null;
+    return getSubSets(set, set.size()-1);
   }
   
   List<List<Integer>> getSubSets(List<Integer> set, int n) {
