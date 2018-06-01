@@ -5,14 +5,17 @@ public class RecursiveMultiply {
   public int minProduct(int a, int b) {
     int bigger = a > b ? a : b;
     int smaller = a > b ? b : a;
-    return minProductHelper(smaller, bigger);
+    int[] memo = new int[smaller + 1];
+    return minProductHelper(smaller, bigger, memo);
   }
   
-  public int minProductHelper(int smaller, int bigger) {
+  public int minProductHelper(int smaller, int bigger, int[] memo) {
     if (smaller == 0) {
       return 0;
     } else if (smaller == 1) {
       return bigger;
+    } else if (memo[smaller] > 0) {
+      return memo[smaller];
     }
     
     int s = smaller >> 1;//Divide by 2
@@ -21,7 +24,8 @@ public class RecursiveMultiply {
     if (smaller % 2 == 1) {
       half2 = minProduct(smaller - s, bigger);
     }
-    return half1 + half2;
+    memo[smaller] = half1 + half2;
+    return memo[smaller];
   }
   
   public static void main(String[] args) {
