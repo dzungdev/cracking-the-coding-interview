@@ -22,4 +22,18 @@ public class Library {
     return books.remove(bookId);
   }
   
+  public boolean remove(Book b) { return remove(b.getId());}
+  public boolean remove(int bookId) {
+    boolean result = false;
+    if (books.containsKey(bookId)) {
+      books.remove(bookId);
+      result = true;
+    }
+    return result;
+  }
+  
+  public Book findById(int bookId) {
+    return books.get(bookId); 
+  }
+  
 }
