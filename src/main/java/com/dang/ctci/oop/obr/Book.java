@@ -5,6 +5,7 @@ public class Book {
   private int id;
   private String details;
   
+  
   public Book(int id, String details) {
     super();
     this.id = id;
