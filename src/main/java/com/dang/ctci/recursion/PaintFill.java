@@ -17,4 +17,12 @@ public class PaintFill {
     }
     return true;
   }
+  
+  public static void main(String[] args) {
+    String a = "Some long string literal over many lines";
+    String b = "Some long string literal " 
+      + "over many lines";
+    System.out.println(a == b);
+
+  }
 }
