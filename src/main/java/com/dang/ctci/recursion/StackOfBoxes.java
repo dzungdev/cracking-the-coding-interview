@@ -1,8 +1,10 @@
 package com.dang.ctci.recursion;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 
 class Box {
   
@@ -77,7 +79,23 @@ public class StackOfBoxes {
     return maxHeight;
   }
   
+  private static Box createBox() {
+    Random r = new Random();
+    return new Box(r.nextInt(100), r.nextInt(100), r.nextInt(100));
+  }
+  
   public static void main(String[] args) {
+    
+    List<Box> boxes = Arrays.asList(createBox(), createBox(), createBox(), createBox());
+    StackOfBoxes app = new StackOfBoxes();
+    int maxHeight = app.createStack(boxes);
+    
+    for(int i = 0; i < boxes.size();i++) {
+      Box box = boxes.get(i);
+      System.out.println("height: " + box.getHeight() + ", width: " + box.getWidth() + ",wide: " + box.getWide());
+    }
+    
+    System.out.println(maxHeight);
     
   }
   
